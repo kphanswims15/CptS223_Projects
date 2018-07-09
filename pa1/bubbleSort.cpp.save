@@ -1,0 +1,120 @@
+#include "bubbleSort.h"
+
+/*
+Date Created: September 23, 2016
+Date Last Modified: September 23, 2016
+Description:
+*/
+
+void bubblesort(vecotr<int> &arr, int n)
+{
+        int i = 0, j = 0, temp = 0; //holding variable
+
+        for (i = 0; i < n; ++i)
+        {
+                for (j = 0; j < n - i - 1; ++j)
+                {
+                        if (arr[j] > arr[j+1])
+                        {
+                                temp = arr[j];
+                                arr[j] = arr[j+1];
+                                arr[j+1] = temp;
+                        }
+		}
+	}
+}
+
+/*
+Date Created: September 23, 2016
+Description:
+*/
+
+void bubblesortBackwards(vector<int> &arr, int n)
+{
+	int i = 0, j = 0, temp = 0; //holding variable
+
+        for (i = 0; i < n; ++i)
+        {
+                for (j = 0; j < n - i - 1; ++j)
+                {
+                        if (arr[j] < arr[j+1])
+                        {
+                                temp = arr[j];
+                                arr[j] = arr[j+1];
+                                arr[j+1] = temp;
+                        }
+                }
+        }
+
+}
+
+/*
+Date Created: September 22, 2016
+Date Last Modified: September 23, 2016
+Description:
+*/
+
+float do_bubblesort(vector<int> &arr, int n)
+{
+	float time = 0.0;
+	int i = 0, j = 0, temp = 0; //holding variable
+
+	//allows the program to keep time
+	chrono::time_point<std::chrono::system_clock> start, end;
+
+	start = std::chrono::system_clock::now(); // start time before program
+
+	for (i = 0; i < n; ++i)
+	{
+		for (j = 0; j < n - i - 1; ++j)
+		{
+			if (arr[j] > arr[j+1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+
+	end = chrono::system_clock::now(); //end time
+
+	chrono::duration<float> time_e = end - start; //time elapsed
+	time = time_e.count(); //conversion to float
+
+	return time;
+}
+
+int getRandom()
+{
+	return rand();
+}
+
+float randomCase(vector<int> &arr, int n)
+{
+	float time;
+
+	time =  do_bubblesort(arr, n);
+
+	return time;
+}
+
+float worseCase(vector<int> &arr, int n)
+{
+	float time;
+
+	bubblesortBackwards(arr, n); // reverses the list
+	time = do_bubblesort(arr, n);
+
+	return time;
+}
+
+float bestCast(vector<int> &arr, int n)
+{
+	float time;
+
+	bubblesort(arr, n); // sorts the list in order
+	time = do_bubblesort(arr, n);
+
+	return time;
+}

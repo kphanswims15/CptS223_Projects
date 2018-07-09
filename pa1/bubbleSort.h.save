@@ -1,0 +1,28 @@
+
+#pragma once
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <chrono>
+#include <ctime>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+
+using namespace std;
+
+/*
+Date Created: September 21, 2016
+Date Last Modified: September 23, 2016
+Description:
+*/
+
+void bubblesort(vector<int> &arr, int n); //sorts without returning the time
+void bubblesortBackwards(vector<int> &arr, int n); // reverses bubblesort
+float do_bubblesort(vector<int> &arr, int n);
+int getRandom(); // allows for random numbers
+float randomCase(vector<int> &arr, int n); // gets the time for random cases
+float worseCase(vector<int> &arr, int n); // gets the time for worse cases
+float bestCase(vector<int> &arr, int n); // gets the time for best cases
+void wrapperBubblesort();
